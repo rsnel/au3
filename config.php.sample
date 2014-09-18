@@ -1,0 +1,7 @@
+<?
+// creditor info
+$creditor = "'t Geldhuys";
+$IBAN = "NL00BANK000000000";
+$BIC = "BANKNL2A"; // doet het programma automatisch voor Nederlandse rekeningnummers
+$SchemeId = "NL00ZZZ000000000000";
+?>

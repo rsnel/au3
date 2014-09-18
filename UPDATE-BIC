@@ -1,0 +1,23 @@
+We moeten alle BIC's meesturen met de SEPA incasso XML.
+
+In Nederland is het eenvoudig om de BIC af te leiden uit de IBAN.
+
+http://www.betaalvereniging.nl/europees-betalen/sepa-documentatie/bic-afleiden-uit-iban/
+
+Om de lijst met BIC's te updaten kun je van deze pagina de excelsheet
+downloaden, opslaan als 'Tekstbestand (tab is scheidingsteken)' en 
+runnen:
+
+./convert_bic_table.php bic_list.txt
+
+In deze excel sheet staat op de eerste regel:
+"Laatste update: XX MAAND JAAR"
+
+En op de tweede regel de kolom headers. Alleen de eerste 2 zijn van belang:
+"Bank Identifier" en "BIC"
+
+Na het runnen van dit script heb je een file als:
+BICs-2014-03-07.php
+
+Maak een symlink hiernaar vanaf BICs.php.
+ln -s BICs.2014-03-07.php BICs.php

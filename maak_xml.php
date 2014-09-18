@@ -1,5 +1,6 @@
 <? 
 ini_set("auto_detect_line_endings", true);
+require('config.php');
 require('php-iban.php');
 // maak deze file volgens UPDATE-BIC
 require('BICs.php');
@@ -102,7 +103,7 @@ if (!($fp = fopen($_FILES['tabseptxt']['tmp_name'], 'r'))) fatal_error('unable t
 
 // attempt to store file somewhere else for reference, don't bother user if it fails
 // since we already have a handle for the file succes or failure doesn't matter
-move_uploaded_file($_FILES['tabseptxt']['tmp_name'], 'data/'.$filename);
+move_uploaded_file($_FILES['tabseptxt']['tmp_name'], $datadir.$filename);
 
 if (!($legenda = fgetcsv($fp, 0, "\t"))) fatal_error('unable to read fist line of uploaded file');
 
@@ -289,7 +290,7 @@ foreach ($PmtInfs as $PmtInf) {
 $xml = $doc->saveXML();
 
 // we slaan de gegenereerde xml op, zodat we er later nog naar kunnen kijken
-if ($fp = fopen('data/'.$MsgId.'.xml', 'w')) {
+if ($fp = fopen($datadir.$MsgId.'.xml', 'w')) {
 	fwrite($fp, $xml);
 	fclose($fp);
 }

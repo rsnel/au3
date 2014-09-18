@@ -1,7 +1,8 @@
 <?
 // creditor info
-$creditor = "'t Geldhuys";
-$IBAN = "NL00BANK000000000";
-$BIC = "BANKNL2A"; // doet het programma automatisch voor Nederlandse rekeningnummers
-$SchemeId = "NL00ZZZ000000000000";
+$creditor = '\'t Geldhuys';
+$IBAN = 'NL00BANK000000000';
+$BIC = 'BANKNL2A'; // doet het programma automatisch voor Nederlandse rekeningnummers
+$SchemeId = 'NL00ZZZ000000000000';
+$datadir = '/somewhere/webusers/cant/see/it/'; // met trailing slash
 ?>

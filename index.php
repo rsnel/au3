@@ -48,7 +48,7 @@ gegroepeerd in dezelfde batch.
 <p><small>Deze webapplicatie <code>au3</code>, &copy; 2014 Rik Snel &lt;rik@snel.it&gt;. Powered by PHP <? echo(phpversion()); ?>.<br>
 Deze software maakt gebruik van <code>php-iban</code>, licentie GPLv3, te vinden op <a href="http://code.google.com/p/php-iban">http://code.google.com/p/php-iban</a>.<br>
 Released as <a href="http://www.gnu.org/philosophy/free-sw.html">free software</a> without warranties under <a href="http://www.fsf.org/licensing/licenses/agpl-3.0.html">GNU AGPL v3</a>.<br>
-Sourcecode: subversion co <a href="http://penta.snel.it/svn/misc/trunk/au3/">http://penta.snel.it/svn/misc/trunk/au3/</a>.
+Sourcecode: git clone <a href="https://github.com/rsnel/au3/">https://github.com/rsnel//au3/</a>.
 </small>
 
 </body>

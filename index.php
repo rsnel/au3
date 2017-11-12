@@ -1,10 +1,10 @@
 <? require('config.php'); ?>
 <!DOCTYPE html5>
 <html>
-<head><title>Excel naar XML converter voor SEPA incasso</title></head>
+<head><title>Excel naar XML converter voor SEPA Incasso en Verzamelbetaling</title></head>
 <body>
 
-<h3>Excel naar XML converter voor SEPA incasso</h3>
+<h3>Excel naar XML converter</h3>
 
 Deze eenvoudige webapplicatie vertaalt een Excel document <b>dat opgeslagen is als
 &quot;Tekst (tab is scheidingsteken)&quot;</b> naar een xml bestand dat geschikt is
@@ -12,6 +12,8 @@ om naar ING te sturen.
 
 <p>De tekst in vrije velden (naam, omschrijving) mag de tekens A-Z a-z 0-9 / -
 ? : { } . , ' + en spatie bevatten.
+
+<h4>SEPA Incasso</h4>
 
 <p>Het Excel document moet minstens de volgende kolommen hebben, de volgorde maakt 
 niet uit. De kolomtitels moeten op de eerste regel van het bestand staan. Eventuele
@@ -38,6 +40,32 @@ gegroepeerd in dezelfde batch.
 <tr><td>Incassant IBAN</td><td><input type="text" size="32" maxlength="32" name="CdtrAcct" value="<? echo($IBAN); ?>"></td></tr>
 <tr><td>Incassant BIC</td><td><input type="text" size="15" maxlength="11" name="CdtrAgt" value="<? echo($BIC); ?>"></td></tr>
 <tr><td>Incassant Id</td><td><input type="text" size="32" maxlength="32" name="CdtrSchmeId" value="<? echo($SchemeId); ?>"></td></tr>
+<tr><td>File met incasso's</td><td><input type="file" name="tabseptxt"></td></tr>
+</table>
+<input type="submit" value="Maak XML bestand">
+</form>
+
+<h4>SEPA Verzamelbetaling (klaar om te testen)</h4>
+
+<p>Het Excel document moet minstens de volgende kolommen hebben, de volgorde maakt 
+niet uit. De kolomtitels moeten op de eerste regel van het bestand staan. Eventuele
+overige kolommen worden genegeerd.
+
+<ul>
+<li>&quot;Uitvoeringsdatum&quot; (DD-MM-YYYY)</li>
+<li>&quot;Boekingstype&quot; (Totaalbedrag op rekeningafschrift, is dit steeds hetzelfde?)</li>
+<li>&quot;IBAN&quot;</li>
+<li>&quot;BIC tegenrekening&quot; (gaat automatisch voor NL)</li>
+<li>&quot;T.n.v.&quot; (max 70 tekens)</li>
+<li>&quot;Bedrag&quot; (EUR met 2 cijfers achter de komma)</li>
+<li>&quot;Omschrijving&quot; (max 140 tekens)</li>
+</ul>
+
+<p><form method="POST" enctype="multipart/form-data" accept-charset="UTF-8" action="maak_xml2.php">
+<table>
+<tr><td>Incassant naam</td><td><input type="text" size="70" maxlength="70" name="Nm" value="<? echo($creditor); ?>"></td></tr>
+<tr><td>Incassant IBAN</td><td><input type="text" size="32" maxlength="32" name="DbtrAcct" value="<? echo($IBAN); ?>"></td></tr>
+<tr><td>Incassant BIC</td><td><input type="text" size="15" maxlength="11" name="DbtrAgt" value="<? echo($BIC); ?>"></td></tr>
 <tr><td>File met incasso's</td><td><input type="file" name="tabseptxt"></td></tr>
 </table>
 <input type="submit" value="Maak XML bestand">

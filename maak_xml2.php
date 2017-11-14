@@ -57,7 +57,7 @@ foreach ($legenda as $key => $header) {
 }
 
 // controleer of de benodigde kolommen aanwezig zijn
-check_columns($idx, 'Uitvoeringsdatum', 'Boekingstype', 'IBAN', 'BIC tegenrekening', 'T.n.v.',
+check_columns($idx, 'Uitvoeringsdatum', 'IBAN', 'BIC tegenrekening', 'T.n.v.',
 	'Bedrag', 'Omschrijving');
 
 // telt regels in inputbestand, zodat foutmeldingen kunnen worden voorzien van regelnummer
@@ -75,20 +75,20 @@ try {
 
 		$ReqdExctnDt = check_and_format_date(get_field($line, $idx, 'Uitvoeringsdatum'), 'Uitvoeringsdatum');
 
-		$Boekingstype= get_field($line, $idx, 'Boekingstype');
-		// check incassosoort
-		if ($Boekingstype!= 'Totaalbedrag op rekeningafschrift')
-			throw new Exception("ongeldige \"Boekingstype\", $Soort_incasso, moet zijn \"Totaalbedrag op rekeningafschrift\"");
-		//$SeqTp = $Soort_incasso; // wat moeten we hiermee
+		if (isset($_POST['batch'])) { // batch by date
+			$BatchBy = $ReqdExctnDt;
+		} else { // do not batch
+			$BatchBy = $linecounter;
+		}
 
-		// we kunnen de batch identificeren met ReqdColltnDt en SeqTp
-		if (!isset($PmtInfs[$ReqdExctnDt])) {
+		// we kunnen de batch identificeren met ReqdColltnDt
+		if (!isset($PmtInfs[$BatchBy])) {
 			// batch bestaat nog niet; maak nieuwe
-			$PmtInfs[$ReqdExctnDt] = Array();
-			$PmtInfs[$ReqdExctnDt]['ReqdExctnDt'] = $ReqdExctnDt;
-			$PmtInfs[$ReqdExctnDt]['NbOfTxs'] = 0;
-			$PmtInfs[$ReqdExctnDt]['CtrlSum'] = 0;
-			$PmtInfs[$ReqdExctnDt]['CdtTrfTxInfs'] = Array();
+			$PmtInfs[$BatchBy] = Array();
+			$PmtInfs[$BatchBy]['ReqdExctnDt'] = $ReqdExctnDt;
+			$PmtInfs[$BatchBy]['NbOfTxs'] = 0;
+			$PmtInfs[$BatchBy]['CtrlSum'] = 0;
+			$PmtInfs[$BatchBy]['CdtTrfTxInfs'] = Array();
 		}
 
 		$CdtTrfTxInf = Array();
@@ -107,9 +107,9 @@ try {
 		// CtrlSum wordt later geconverteerd naar EURos
 		$CtrlSum += $cents;
 		$NbOfTxs += 1;
-		$PmtInfs[$ReqdExctnDt]['CtrlSum'] += $cents;
-		$PmtInfs[$ReqdExctnDt]['NbOfTxs'] += 1;
-		$PmtInfs[$ReqdExctnDt]['CdtTrfTxInfs'][] = $CdtTrfTxInf;
+		$PmtInfs[$BatchBy]['CtrlSum'] += $cents;
+		$PmtInfs[$BatchBy]['NbOfTxs'] += 1;
+		$PmtInfs[$BatchBy]['CdtTrfTxInfs'][] = $CdtTrfTxInf;
 	}
 } catch (Exception $e) {
 	fatal_error("parsing line $linecounter: {$e->GetMessage()}");

@@ -45,7 +45,7 @@ gegroepeerd in dezelfde batch.
 <input type="submit" value="Maak XML bestand">
 </form>
 
-<h4>SEPA Verzamelbetaling (klaar om te testen)</h4>
+<h4>SEPA Verzamelbetaling</h4>
 
 <p>Het Excel document moet minstens de volgende kolommen hebben, de volgorde maakt 
 niet uit. De kolomtitels moeten op de eerste regel van het bestand staan. Eventuele
@@ -53,7 +53,6 @@ overige kolommen worden genegeerd.
 
 <ul>
 <li>&quot;Uitvoeringsdatum&quot; (DD-MM-YYYY)</li>
-<li>&quot;Boekingstype&quot; (Totaalbedrag op rekeningafschrift, is dit steeds hetzelfde?)</li>
 <li>&quot;IBAN&quot;</li>
 <li>&quot;BIC tegenrekening&quot; (gaat automatisch voor NL)</li>
 <li>&quot;T.n.v.&quot; (max 70 tekens)</li>
@@ -66,6 +65,7 @@ overige kolommen worden genegeerd.
 <tr><td>Incassant naam</td><td><input type="text" size="70" maxlength="70" name="Nm" value="<? echo($creditor); ?>"></td></tr>
 <tr><td>Incassant IBAN</td><td><input type="text" size="32" maxlength="32" name="DbtrAcct" value="<? echo($IBAN); ?>"></td></tr>
 <tr><td>Incassant BIC</td><td><input type="text" size="15" maxlength="11" name="DbtrAgt" value="<? echo($BIC); ?>"></td></tr>
+<tr><td>Batch (op datum)</td><td><input type="checkbox" checked name="batch" value="1"> (klaar om te testen)</td></tr>
 <tr><td>File met incasso's</td><td><input type="file" name="tabseptxt"></td></tr>
 </table>
 <input type="submit" value="Maak XML bestand">

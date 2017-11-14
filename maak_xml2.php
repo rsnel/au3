@@ -75,11 +75,12 @@ try {
 
 		$ReqdExctnDt = check_and_format_date(get_field($line, $idx, 'Uitvoeringsdatum'), 'Uitvoeringsdatum');
 
-		if (isset($_POST['batch'])) { // batch by date
+		// het batchvinkje werkt niet
+		//if (isset($_POST['batch'])) { // batch by date
 			$BatchBy = $ReqdExctnDt;
-		} else { // do not batch
-			$BatchBy = $linecounter;
-		}
+		//} else { // do not batch
+		//	$BatchBy = $linecounter;
+		//}
 
 		// we kunnen de batch identificeren met ReqdColltnDt
 		if (!isset($PmtInfs[$BatchBy])) {

@@ -65,7 +65,7 @@ overige kolommen worden genegeerd.
 <tr><td>Incassant naam</td><td><input type="text" size="70" maxlength="70" name="Nm" value="<? echo($creditor); ?>"></td></tr>
 <tr><td>Incassant IBAN</td><td><input type="text" size="32" maxlength="32" name="DbtrAcct" value="<? echo($IBAN); ?>"></td></tr>
 <tr><td>Incassant BIC</td><td><input type="text" size="15" maxlength="11" name="DbtrAgt" value="<? echo($BIC); ?>"></td></tr>
-<tr><td>Batch (op datum)</td><td><input type="checkbox" checked name="batch" value="1"> (klaar om te testen)</td></tr>
+<!-- <tr><td>Batch (op datum)</td><td><input type="checkbox" checked name="batch" value="1"> (werkt niet)</td></tr>-->
 <tr><td>File met incasso's</td><td><input type="file" name="tabseptxt"></td></tr>
 </table>
 <input type="submit" value="Maak XML bestand">

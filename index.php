@@ -40,7 +40,7 @@ gegroepeerd in dezelfde batch.
 <tr><td>Incassant IBAN</td><td><input type="text" size="32" maxlength="32" name="CdtrAcct" value="<? echo($IBAN); ?>"></td></tr>
 <tr><td>Incassant BIC</td><td><input type="text" size="15" maxlength="11" name="CdtrAgt" value="<? echo($BIC); ?>"></td></tr>
 <tr><td>Incassant Id</td><td><input type="text" size="32" maxlength="32" name="CdtrSchmeId" value="<? echo($SchemeId); ?>"></td></tr>
-<tr><td>File met incasso's</td><td><input type="file" name="tabseptxt"></td></tr>
+<tr><td>Incasso's</td><td><input type="file" name="tabseptxt"></td></tr>
 </table>
 <input type="submit" value="Maak XML bestand">
 </form>
@@ -66,7 +66,7 @@ overige kolommen worden genegeerd.
 <tr><td>IBAN</td><td><input type="text" size="32" maxlength="32" name="DbtrAcct" value="<? echo($IBAN); ?>"></td></tr>
 <tr><td>BIC</td><td><input type="text" size="15" maxlength="11" name="DbtrAgt" value="<? echo($BIC); ?>"></td></tr>
 <!-- <tr><td>Batch (op datum)</td><td><input type="checkbox" checked name="batch" value="1"> (werkt niet)</td></tr>-->
-<tr><td>File met incasso's</td><td><input type="file" name="tabseptxt"></td></tr>
+<tr><td>Overboekingen</td><td><input type="file" name="tabseptxt"></td></tr>
 </table>
 <input type="submit" value="Maak XML bestand">
 </form>
